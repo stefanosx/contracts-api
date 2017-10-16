@@ -3,6 +3,7 @@
 The App is a simple Rails-api with basic HTTP authorization, 
 using [devise](https://github.com/plataformatec/devise) and 
 [simple_token_authentication](https://github.com/gonzalo-bulnes/simple_token_authentication) gems.
+You can create users and contracts, display information and delete them.
 
 I decided to use this 2 gems for authrorization and authentication as they are really well maintained, and easy to use.
 I could have skipped the simple token authentication and include my own solution, 
@@ -11,6 +12,9 @@ but for simplicity and a more readable and maintainable code i decide to use a p
 
 ### ENDPOINTS
 ---
+On each endpoint you are getting a message about your request, model created or if there was an error.
+
+**Note**: On user creation, for testing reason you are getting back an authentication token, you can use for sending/getting info about contracts
 
 ```
 POST /user
