@@ -4,13 +4,14 @@ class ContractController < ApplicationController
   before_action :have_access, only: [:show, :destroy]
 
   def create
-    contract = current_user.contracts.create(vendor: params[:vendor], starts_on: params[:starts_on],
-                                             ends_on:params[:ends_on], price: params[:price])
+    contract = current_user.contracts.
+      create(vendor: params[:vendor], starts_on: params[:starts_on],
+             ends_on: params[:ends_on], price: params[:price])
     if contract.id.present?
       render json: {message: "Contract created" }
     else
-      render json: {message: "Contract did not created", error: {messages: contract.errors.full_messages}},
-        status: 422
+      render json: {message: "Contract did not created",
+                    error: {messages: contract.errors.full_messages}}, status: 422
     end
   end
 
@@ -23,7 +24,7 @@ class ContractController < ApplicationController
     contract.destroy
     render json: {message: "Contract #{vendor} deleted successfully"}
   end
-  
+
   private
 
   def have_access
